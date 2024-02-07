@@ -1,0 +1,13 @@
+{
+  "name": "com.stdnounou.state-machine",
+  "version": "1.0.0",
+  "displayName": "State Machine",
+  "description": "This is our custom State Machine system.",
+  "unity": "2021.3",
+  "documentationUrl": "https://stdnounous-doc-1abfdd.webflow.io",
+  "author": {
+    "name": "BalD",
+    "email": "florianhusson1@gmail.com",
+    "url": "https://fh-portfolio-d3d69c.webflow.io"
+  }
+}
