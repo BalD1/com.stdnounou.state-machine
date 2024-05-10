@@ -43,6 +43,7 @@ namespace StdNounou.FSM
             CurrentState = baseState;
             CurrentStateKey = BaseStateKey;
             CurrentState.EnterState();
+            CurrentState.EventsSubscriber();
         }
 
         protected abstract void SetupComponents();
@@ -64,6 +65,7 @@ namespace StdNounou.FSM
         private void PerformSwitchState(StateEnum state)
         {
             CurrentState?.ExitState();
+            CurrentState?.EventsUnSubscriber();
             if (!States.TryGetValue(state, out IState newState) || newState == null)
             {
                 this.LogError("Could not find state " + state);
@@ -74,6 +76,7 @@ namespace StdNounou.FSM
             CurrentState = newState;
             CurrentStateKey = state;
             CurrentState?.EnterState();
+            CurrentState?.EventsSubscriber();
             OnStateChanged?.Invoke(state);
         }
 
@@ -85,6 +88,7 @@ namespace StdNounou.FSM
         private void OnDestroy()
         {
             CurrentState?.ExitState();
+            CurrentState?.EventsUnSubscriber();
         }
     }
 }
